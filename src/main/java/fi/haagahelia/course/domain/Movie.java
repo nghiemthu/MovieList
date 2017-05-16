@@ -1,7 +1,6 @@
 package fi.haagahelia.course.domain;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,6 +20,7 @@ public class Movie {
     private String img;
     private double imdb;
     private int year;
+    private long length;
    
     @ManyToOne
     @JsonIgnore
@@ -29,12 +29,13 @@ public class Movie {
 
     public Movie() {}
 
-	public Movie(String title, String img, double imdb, int year, Genre genre) {
+	public Movie(String title, String img, double imdb, int year,long length, Genre genre) {
 		super();
 		this.title = title;
 		this.img = img;
 		this.imdb = imdb;
 		this.year = year;
+		this.length = length;
 		this.genre = genre;
 	}
 	
@@ -77,6 +78,14 @@ public class Movie {
 
 	public void setYear(int year) {
 		this.year = year;
+	}
+	
+	public long getLength() {
+		return length;
+	}
+
+	public void setLength(long length) {
+		this.length = length;
 	}
 
 	public Genre getGenre() {
